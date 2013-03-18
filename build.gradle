@@ -1,0 +1,32 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+repositories {
+    mavenCentral ()
+}
+
+dependencies {
+    testCompile ('org.hamcrest:hamcrest-library:1.2.1','junit:junit-dep:4.10')
+    compile ('org.apache.cxf:cxf-rt-frontend-jaxrs:2.3.4',
+            'javax.servlet:servlet-api:2.4',
+            'org.springframework:spring-webmvc:3.0.5.RELEASE')
+}
+
+ext {
+    // specify the build output folder
+    ideOutputDir = file('src/main/webapp/WEB-INF/classes')
+}
+
+idea {
+    module {
+        testSourceDirs = [file('src/test')]
+        sourceDirs = [file('src/main/java'), file('src/main/resources')]
+        inheritOutputDirs = false
+        outputDir = ideOutputDir
+    }
+}
+
+compileJava.destinationDir = ideOutputDir
+jettyRun.dependsOn clean, build

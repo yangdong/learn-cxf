@@ -1,0 +1,4 @@
+learn-cxf.*
+.gradle
+.idea
+src/main/webapp/WEB-INF/classes
