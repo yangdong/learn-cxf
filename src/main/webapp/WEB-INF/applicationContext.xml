@@ -19,6 +19,9 @@ http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
             <ref bean="helloService"/>
             <ref bean="exceptionService"/>
         </jaxrs:serviceBeans>
+        <!--<jaxrs:invoker>-->
+            <!--<ref bean="transactionalInvoker"/>-->
+        <!--</jaxrs:invoker>-->
         <jaxrs:outInterceptors>
             <ref bean="cachePostInterceptor"/>
         </jaxrs:outInterceptors>
@@ -28,16 +31,15 @@ http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
             <ref bean="jsonProvider"/>
             <ref bean="xmlProvider"/>
             <ref bean="parseExceptionHandler"/>
-            <ref bean="tagMapper"/>
         </jaxrs:providers>
         <jaxrs:features>
             <cxf:logging/>
         </jaxrs:features>
     </jaxrs:server>
 
+    <bean id="transactionalInvoker" class="org.thoughtworks.api.invoker.TransactionalInvoker"/>
     <bean id="loginRequiredInterceptor" class="org.thoughtworks.api.interceptor.LoginRequiredInterceptor"/>
     <bean id="cachePostInterceptor" class="org.thoughtworks.api.interceptor.CachePostInterceptor"/>
-    <bean id="tagMapper" class="org.thoughtworks.api.binding.TagMapper"/>
 
     <bean id="gsonProvider" class="org.thoughtworks.api.provider.GsonProvider"/>
     <bean id="jsonProvider" class="org.apache.cxf.jaxrs.provider.JSONProvider">
