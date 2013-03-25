@@ -9,8 +9,8 @@ repositories {
 
 dependencies {
     testCompile ('org.hamcrest:hamcrest-library:1.2.1',
-            'junit:junit-dep:4.10')
-//            "org.mockito:mockito-all:1.8.5")
+            'junit:junit-dep:4.10',
+            "org.mockito:mockito-all:1.8.5")
 
     compile ('org.apache.cxf:cxf-rt-frontend-jaxrs:2.3.4',
             'javax.servlet:servlet-api:2.4',
@@ -18,7 +18,6 @@ dependencies {
 }
 
 ext {
-    // specify the build output folder
     ideOutputDir = file('src/main/webapp/WEB-INF/classes')
 }
 
