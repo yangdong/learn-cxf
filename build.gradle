@@ -3,21 +3,43 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'jetty'
 
+//apply plugin: GreetingPlugin, fail and I have no idea why
+println project.convention.plugins.each
+project (':') {
+    sourceFile = 'test'
+    apply plugin: LineCounterPlugin
+}
+
 repositories {
-    mavenCentral ()
+    mavenCentral()
 }
 
 dependencies {
-    testCompile ('org.hamcrest:hamcrest-library:1.2.1',
+    testCompile('org.hamcrest:hamcrest-library:1.2.1',
             'junit:junit-dep:4.10',
             "org.mockito:mockito-all:1.8.5")
 
-    compile ('org.apache.cxf:cxf-rt-frontend-jaxrs:2.3.4',
+    compile('org.apache.cxf:cxf-rt-frontend-jaxrs:2.3.4',
             'javax.servlet:servlet-api:2.4',
             'org.springframework:spring-webmvc:3.0.5.RELEASE')
 }
 
+class MyExtension {
+    String foo
+
+    MyExtension(String foo) {
+        this.foo = foo
+    }
+}
+
+project.extensions.create('myext', MyExtension, "foo")
+
+project.myext {
+   assert foo == "foo"
+}
+
 ext {
+    println delegate
     ideOutputDir = file('src/main/webapp/WEB-INF/classes')
 }
 
