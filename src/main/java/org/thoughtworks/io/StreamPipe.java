@@ -1,4 +1,4 @@
-package org.thoughtworks.IOUtils;
+package org.thoughtworks.io;
 
 import java.io.IOException;
 import java.io.InputStream;

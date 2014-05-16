@@ -1,6 +1,6 @@
 package org.thoughtworks.servlet;
 
-import org.thoughtworks.IOUtils.StreamPipe;
+import org.thoughtworks.io.StreamPipe;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
