@@ -29,8 +29,8 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>tw</servlet-name>
-        <servlet-class>org.thoughtworks.servlet.StaticContentServlet</servlet-class>
+        <servlet-name>static</servlet-name>
+        <servlet-class>org.thoughtworks.web.servlet.StaticContentServlet</servlet-class>
         <init-param>
             <param-name>staticHtml</param-name>
             <param-value>/WEB-INF/static/index.html</param-value>
@@ -39,8 +39,8 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>tw</servlet-name>
-        <url-pattern>/tw</url-pattern>
+        <servlet-name>static</servlet-name>
+        <url-pattern>/static</url-pattern>
     </servlet-mapping>
 
     <listener>
@@ -48,7 +48,7 @@
     </listener>
 
     <listener>
-        <listener-class>org.thoughtworks.servlet.ContextLoaderListener</listener-class>
+        <listener-class>org.thoughtworks.web.servlet.ContextLoaderListener</listener-class>
     </listener>
 
     <context-param>
@@ -59,4 +59,14 @@
     <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
+
+    <filter>
+        <filter-name>Logging Filter</filter-name>
+        <filter-class>org.thoughtworks.web.filter.LoggingFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>Logging Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

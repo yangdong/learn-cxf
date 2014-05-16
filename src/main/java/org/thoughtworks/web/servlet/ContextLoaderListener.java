@@ -1,4 +1,4 @@
-package org.thoughtworks.servlet;
+package org.thoughtworks.web.servlet;
 
 import org.apache.log4j.Logger;
 
