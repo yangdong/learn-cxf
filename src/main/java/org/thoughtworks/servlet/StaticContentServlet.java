@@ -1,5 +1,6 @@
 package org.thoughtworks.servlet;
 
+import org.apache.log4j.Logger;
 import org.thoughtworks.io.StreamPipe;
 
 import javax.servlet.ServletException;
@@ -10,14 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class StaticContentServlet extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(StaticContentServlet.class);
     static {
-        System.out.println("StaticContentServlet has been loaded!");
+        LOGGER.info("StaticContentServlet has been loaded!");
     }
 
     public static final String STATIC_HTML = "staticHtml";
 
     public StaticContentServlet() {
-        System.out.println(getClass().getName() + " has been initialized!");
+        LOGGER.info("StaticContentServlet has been initialized!");
     }
 
     @Override
