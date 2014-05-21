@@ -4,8 +4,6 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
-
-
     <servlet>
         <servlet-name>CXFServlet</servlet-name>
         <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
@@ -60,6 +58,10 @@
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
 
+    <listener>
+        <listener-class>org.thoughtworks.web.listener.SessionListener</listener-class>
+    </listener>
+
     <filter>
         <filter-name>Logging Filter</filter-name>
         <filter-class>org.thoughtworks.web.filter.LoggingFilter</filter-class>
@@ -69,4 +71,8 @@
         <filter-name>Logging Filter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
 </web-app>

@@ -13,7 +13,7 @@ public class LoggingFilter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) req;
-        LOGGER.info(String.format("%sing %s", request.getMethod(), request.getRequestURI()));
+        LOGGER.info(String.format("%sing %s with session id=%s", request.getMethod(), request.getRequestURI(), request.getSession().getId()));
         chain.doFilter(req, resp);
     }
 
